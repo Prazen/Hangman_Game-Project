@@ -26,7 +26,7 @@ const resetGame = () => {
 const getRandomWord = () => {
     // Selecting the next word and hint from the WordList based on the current index
     if(currentIndex >= wordList.length){
-        alert('Congrats! You have completed all the words!');
+        // alert('Congrats! You have completed all the words!');
         currentIndex = 0;
         score = 0;
     }
@@ -37,8 +37,6 @@ const getRandomWord = () => {
      document.querySelector(".hint-text b").innerHTML = hint;
      resetGame();
     
-     // Move to the next word for the next round
-     currentIndex++;
 }
 
 const gameOver = (isVictory) => {
@@ -57,6 +55,7 @@ const gameOver = (isVictory) => {
         if (isVictory){
             score++;
             scoreText.innerHTML = `Score: ${score}`;
+            currentIndex++; //if each word is completed then index will also update by 1.
             if(score >= maxScore){
                 setTimeout(() => {
                     alert('Congrats! You have completed all 20 words!');
@@ -69,6 +68,7 @@ const gameOver = (isVictory) => {
                 // Automatically start a new round after 1 second
             }
         }else{
+            currentIndex = 0; // if word is not complete then word index set to 0 {reset}.
             scoreText.innerHTML = `Your Final Score: ${score}`;
             playAgainBtn.style.display = 'block';
         }
@@ -85,7 +85,7 @@ const initGame = (button, clickedLetter) => {
                 wordDisplay.querySelectorAll("li")[index].innerText = letter;
                 wordDisplay.querySelectorAll("li")[index].classList.add("guessed");
             }
-        })
+        });
     }
     else{
         // If clicked letter doesn't exist then update the wrongGuessCount and hangman image 
