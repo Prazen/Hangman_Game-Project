@@ -1,0 +1,5 @@
+color: palettes
+92C7CF
+AAD7D9
+FBF9F1
+E5E1DA

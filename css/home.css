@@ -1,0 +1,264 @@
+*{
+    margin : 0;
+    padding: 0;
+    box-sizing:  border-box;
+    
+}
+
+div{
+   display: block;
+}
+
+.h1-caption{
+    font-family: "Anta", sans-serif;
+    font-size: 44px;
+    margin-top: 15px ;
+    text-align: left;
+    color: rgb(255, 255, 255);
+    line-height: 100px;
+    }
+
+.h2-caption{
+    font-family: "Anta", sans-serif;
+    font-size: 38px;
+    text-align: left;
+    color: #ffb120;
+    line-height: 100px;
+}
+
+h1{
+    text-align: center;
+    color: black;
+    font-size: 44px;
+    margin-top: 15px;
+    line-height: 100px;
+    
+}
+
+
+
+h2{
+    color: #ffb120;
+    font-size: 38px;
+}
+body{
+    width: 100%;
+    color: #000000;
+    background-color: #DBE2EF;
+    
+}
+
+.header{
+    font-family: "Anta", sans-serif;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px 10px;
+    background-color: #F9F7F7;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+
+.logo{
+    font-size: 2rem;
+    color: #000000;
+    text-decoration: none;
+    font-weight: 700;
+    filter : drop-shadow(0px 0px 0.8px #09001d);
+    transition: color .3s;
+}
+
+.logo:hover{
+    color:rgb(51, 51, 51); 
+}
+.navbar{
+
+    display: flex;
+    align-items: space-around;
+    justify-content: flex-end;
+}
+
+.navbar a{
+   
+    padding : 10px 5px;
+    font-size: 16px;
+    color: black;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 8px;
+    transition : color .3s;
+    position: relative;
+}
+
+
+
+.navbar li{
+    display: inline;
+    list-style: none;
+}
+
+.sub-menu1{
+    display: none;
+}
+.sub-menu1 ul li a{
+    color: rgb(0, 0, 0);
+}
+
+.navbar ul li:hover .sub-menu1{
+    display: block;
+    position: absolute;
+    background: #F9F7F7;
+    margin-left: 200px;
+    margin-top: 0px;
+}
+
+.navbar ul li:hover .sub-menu1 ul li{
+    display: block;
+    margin: 5px;
+}
+
+.navbar ul li:hover .sub-menu1 ul li{
+    width: 100px;
+    margin: px;
+    padding: 5px 3px;
+    border-bottom: 1px solid rgb(0, 0, 0);
+    background: transparent;
+    border-radius: 0;
+    text-align: left;
+    font-family: "Anta", sans-serif;
+}
+
+.navbar ul li:hover .sub-menu1 ul li:last-child{
+    border-bottom: none;
+}
+
+.navbar ul li:hover .sub-menu1 ul li a:hover{
+    color: rgb(100, 100, 100);
+}
+
+img{
+    margin: 2.5px;
+    vertical-align: middle;
+}
+
+
+
+#middle-container{
+    text-align: right;
+    position: relative;
+    padding:  0 20px;
+    margin-top: 60px;
+    background-image: url(../Assets/Game_console.jpg);
+    background-size: cover;
+    height: 94vh;
+    width: 100%;
+    background-position: top 50% right 0;
+}
+
+.hangman-img{
+    position: absolute;
+    left: 60%;
+}
+
+#middle-container > .play-button{
+    position:absolute;
+    left: 45%;
+    bottom : 35%;
+}
+
+.play-button{
+    font-family:"Anta", sans-serif;
+    font-size: 18px;
+    padding: 10px 20px;
+    border-radius: 30px;
+    border: 4px solid rgb(255, 177, 32);								 
+    color: black;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 3px 3px 5px rgb(255, 0, 0);
+    background-color: #FFF;
+}
+
+.play-button:active{
+    margin-top: 3px;
+    margin-left: 3px;
+    box-shadow: none;
+}
+
+.play-button:hover::after{
+    content: "";
+    height: 2px;
+    width: 65%;
+    background:#000000;
+    position: absolute;
+    bottom: 12px;
+    left: 20px;
+}
+
+@media(max-width: 600px){
+    .header{
+        font-family: "Anta", sans-serif;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 10px 10px;
+        display: block;
+        background-color: #F9F7F7;
+        align-items: center;
+        z-index: 100;
+    }
+
+    .navbar a{
+        padding: 2px 2px;
+        font-size: 16px;
+        color: black;
+        text-decoration: none;
+        font-weight: 500;
+        margin: 1px ;
+        transition: color .3s;
+        position: relative;
+    }
+
+    #middle-container{
+    position: relative;
+    background-size: fill;
+    height: 93vh;
+    width: 100%;
+    background-position: top 50% right 50%;
+    }
+    
+    
+    h1{
+        text-align: left;
+        font-size: 26px;
+
+        
+    } 
+     h2{
+        text-align: left;       
+        font-size: 16px;
+
+    }
+   .play-button{
+    padding: 5px 10px;
+   }
+
+   #middle-container > .play-button {
+    left: 35%;
+    bottom: 40%;
+}
+.play-button:hover::after{
+    content: "";
+    height: 0px;
+    width: 65%;
+    background:#000000;
+    position: absolute;
+    bottom: 12px;
+    left: 20px;
+}
+
+}

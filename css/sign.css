@@ -1,0 +1,221 @@
+
+/*body{
+    /* background: radial-gradient(to right, red, black); */
+    /*text-align: right;
+    position: relative;
+    padding:  0 20px;
+    margin-top: 60px;
+    background-image: url(../Assets/Game_console.jpg);
+    background-size: cover;
+    height: 94vh;
+    width: 100%;
+    background-position: top 50% right 0;
+    font-family: "Roboto" , sans-serif;
+    height: 100vh;
+} */
+
+body {
+    height: 94vh;
+    position: relative;
+    padding: 0 20px;
+    margin-top: 40px;
+    font-family: "Roboto", sans-serif;
+    height: 100vh;
+    overflow: hidden; /* To ensure the pseudo-element covers the entire body */
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url(../Assets/Game_console.jpg);
+    background-size: cover;
+    background-position: top 50% right 0;
+    opacity: 0.95; /* Adjust this value to control transparency */
+    z-index: -1; /* Ensure the background is behind the content */
+}
+
+.signup-box{
+    width:370px;
+    height: 520px;
+    margin: auto;
+    background-color: white;
+    border-radius: 30px;
+}
+
+.signup-box, .login-box{
+    box-shadow:15px 0px 8px rgba(0, 0, 0, 0.5) ;
+}
+
+.login-box{
+    width: 360px;
+    height: 320px;
+    margin: auto;
+    padding: 10px 5px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px;
+}
+
+h1{
+    font-family: "Anta", sans-serif;
+    text-align: center;
+    padding-top:15px;
+    color: white;
+}
+
+h4{
+    font-family: "Anta", sans-serif;
+    text-align: center;
+    padding-top: 15px;
+}
+
+form{
+    width: 300px;
+    margin-left: 25px;
+}
+
+form > .spwd{
+    display: inline;
+    font-family: "Anta", sans-serif;
+}
+
+form label{
+    font-family: "Anta", sans-serif;
+    display: flex;
+    margin-top: 15px;
+    font-size: 16px;
+}
+
+form input{
+    width: 100%;
+    margin-top: 4px;
+    padding: 10px;
+    border: none;
+    border: 1px solid gray;
+    border-radius: 6px;
+    outline: none;
+}
+form > .form-check-input{
+    width: auto;
+   margin-top: 15px;
+   
+}
+input[type="submit"]{
+    font-family: "Roboto" , sans-serif;
+    width: 320px;
+    height: 40px;
+    margin-top: 20px;
+    border: none;
+    background-color: #000000;
+    color: white;
+    font-size: 18px;
+}
+
+input[value="login"]{
+    font-family: "Roboto" , sans-serif;
+    width: 300px;
+    height: 40px;
+    margin-top: 20px;
+    border: none;
+    background-color: #000000;
+    color: white;
+    font-size: 18px;
+}
+
+form > input[type="checkbox"]{
+    display: inline;
+}
+
+
+
+input[placeholder]{
+    font-family: Anta;
+}
+/* error-msg */
+.text-danger{
+    color: red;
+    font-size: 12px;
+    opacity: 0.8;
+    margin: 0px;
+    padding: 0;
+    text-align: left;
+}
+
+/* paragraph p1 for signup */
+.p1{
+    text-align: center;
+    font-family: "Anta", sans-serif;
+    font-size: 15px;
+    padding-top: 20px ;
+    margin-top: -5px;
+    color: #000000;
+}
+
+.p1 a{
+    font-family: "Anta", sans-serif;
+    color: #000000;
+}
+
+/* paragraph p2 for login */
+.p2{
+    font-family: "Anta", sans-serif;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    margin-top: 140px;
+}
+
+.p2 a{
+    font-family: "Anta", sans-serif;
+    color: #ffffff
+}
+
+.p3{
+    font-family: "Anta", sans-serif;
+    text-align: center;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.p3 a{
+    font-family: "Anta", sans-serif;
+    color: #ffffff;
+    text-decoration : none;
+}
+.alert-msg-succ a{
+    text-decoration: none;
+    color: white;
+}
+.alert-msg-succ{
+    font-family: "Anta", sans-serif;
+    background-color: rgba(46, 238, 72, 0.3);
+    color: rgb(255, 255, 255);
+    border: 1px solid rgb(240, 255, 25);
+    border-radius: 15px;
+    width: 375px;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    margin-bottom: 2px;
+    left: 36%;
+}
+
+.alert-msg-err{
+    background-color: rgb(255, 0, 0, 0.3);
+    font-family: "Anta", sans-serif;
+    color: rgb(255, 255, 255);
+    border: 1px solid rgb(255, 0, 0);
+    border-radius: 15px;
+    width: 372px;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    margin-bottom: 2px;
+    left: 36%;
+}
+
+.input-err{
+    height: 10px;
+}
