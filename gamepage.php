@@ -1,5 +1,14 @@
 <?php 
+session_start();
+
+if(!isset($_SESSION['name'])){
+    header("location: login.php");
+    exit;
+}
+
 include("topheader.php");
+
+include("cfg/dbconnect.php");
 ?>
 
 <!DOCTYPE html>

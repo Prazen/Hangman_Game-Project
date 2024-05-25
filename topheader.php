@@ -1,3 +1,8 @@
+<?php 
+ if(!isset($_SESSION) || session_id()=="" || session_status() === PHP_SESSION_NONE){
+    session_start();
+ }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,16 +28,31 @@
 
             <li><a href="#"> <img src="Assets/message-three-points-1560-svgrepo-com.svg" height="20">About</a></li>
 
-           <li><a href="login.php"> <img src="Assets/account-svgrepo-com.svg" height="20" >Account</a>
+           <li><a href="#"> <img src="Assets/account-svgrepo-com.svg" height="20" >Account</a>
             <div class="sub-menu1">
                 <ul>
-                    <li><a href="login.php">Login</a></li>
-                    <li><a href="signup.php">Sign Up</a></li>
+                    <?php
+                    if (isset($_SESSION['name'])) { ?>
+                        <li><a href="logout.php">Logout</a></li>   
+                 <?php   }
+                 else{ ?>
+                        <li><a href="login.php">Login</a></li>
+                        <li><a href="signup.php">Sign Up</a></li>
+               <?php  }?>
+                    
                 </ul>
             </div>
             </li>
 
-        <li><a href="gamepage.php"> <img src="Assets/game-svgrepo-com.svg" height="20" >Play Game</a> </li>
+            <?php
+                    if (isset($_SESSION['name'])) { ?>
+
+                        <li><a href="gamepage.php"> <img src="Assets/game-svgrepo-com.svg" height="20" >Play Game</a> </li>
+                 <?php   }
+                  else{ ?>
+                  <li><a href="login.php"> <img src="Assets/game-svgrepo-com.svg" height="20" >Play Game</a> </li>
+           <?php  }?>
+       
         </ul>
         </nav>
 </div>

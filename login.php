@@ -1,5 +1,5 @@
 <?php 
-session_start();
+    session_start();
     include("cfg/dbconnect.php");
     $email = $pwd = "";
     $email_err = $pwd_err = "";
@@ -100,7 +100,9 @@ if(!empty($err_msg)){ ?>
         <input type="submit" value="login" name="submit">
 
 
-        <p class="p1">Not Registered? <a href="signup.php">Register Here</a></p>
+        <p class="p1">Not Registered? 
+            <strong><a href="signup.php">Register Here</a></strong>
+        </p>
     </form>
 </div>
    

@@ -139,7 +139,11 @@ if(!empty($err_msg)){ ?>
         <input type="submit" value="Submit" name="submit">
 
 
-        <p class="p1">Already have an account? <a href="login.php">Login Here</a></p>
+        <p class="p1">Already have an account? 
+            <strong>
+            <a href="login.php">Login Here</a>
+            </strong>
+        </p>
     </form>
     
     

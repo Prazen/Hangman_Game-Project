@@ -15,7 +15,16 @@
         <div class="h1-caption">"Explore the words,</div>
         <div class="h2-caption">While Challenging yourself,"</div>
         <p></p>
-        <a href="login.php" class="play-button" type="button">Play Now</a>
+
+
+        <?php
+                    if (isset($_SESSION['name'])) { ?>
+                        <a href="gamepage.php" class="play-button" type="button">Play Now</a>
+                 <?php   }
+                  else{ ?>
+                  <a href="login.php" class="play-button" type="button">Play Now</a>
+           <?php  }?>
+        
 </div>
 </body>
 </html>
