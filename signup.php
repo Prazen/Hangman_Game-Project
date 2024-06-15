@@ -58,12 +58,34 @@
         if(!$error){
             //proceed for register
 
-            $pwd = password_hash($pwd, PASSWORD_DEFAULT);
-            $sql = "insert into users (name, email, password) values (?, ? ,?)";
+            $pwd = password_hash($pwd, PASSWORD_DEFAULT); //hash the password
+
+            $roleSql = "SELECT MAX(role) AS max_role FROM users"; // Determine the role
+
 
             try{
+
+                $stmt = $con->prepare($roleSql);
+                $stmt->execute();
+                $result = $stmt -> get_result();
+                $row = $result->fetch_assoc();
+
+                $maxRole = $row['max_role'];
+
+                if($maxRole === null){
+                    $newRole = 1;
+                }
+                elseif($maxRole == 1 ){
+                    $newRole = 2;
+                }
+                else{
+                    $newRole = $maxRole + 1;
+                }
+
+
+                $sql = "insert into users (name, email, password, role) values (?, ? ,?, ?)"; // query to insert
                 $stmt = $con->prepare($sql);
-                $stmt->bind_param("sss",$name,$email,$pwd);
+                $stmt->bind_param("ssss",$name,$email,$pwd, $newRole);
                 $stmt->execute();
                 $succ_msg = "Registration Successful. Please login <a href = 'login.php'><u>here</u> </a>";
 

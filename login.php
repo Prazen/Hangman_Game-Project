@@ -32,12 +32,20 @@
             if($result->num_rows == 1){
                 $row = $result->fetch_assoc();
                 $stored_pwd = $row['password'];
+                $role = $row['role'];
 
                 if(password_verify($pwd, $stored_pwd)){
                     //successful login
 
                     $_SESSION['name'] = $row['name'];
-                    header("location: gamepage.php");
+                    $_SESSION['role'] = $role;
+
+                    if($role == 1 || $role == 2){
+                        header("location: adminpage.php");
+                    }
+                    else{
+                        header("location: gamepage.php");
+                    }
                 }
                 else{
                     $err_msg = "Incorrect Password";

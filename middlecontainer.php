@@ -13,7 +13,7 @@
 <body>
 <div id="middle-container">
         <div class="h1-caption">"Explore the words,</div>
-        <div class="h2-caption">While Challenging yourself,"</div>
+        <div class="h2-caption">While Challenging yourself"</div>
         <p></p>
 
 

@@ -11,7 +11,7 @@
     <title>The Hangman Game: English Edition</title>
 
     <!-- css=>home -->
-    <link rel="stylesheet" href= "css/home.css?v=1.0" >
+    <link rel="stylesheet" href= "css/home.css?v=1.1" >
 
     <!-- font = anta -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -33,7 +33,9 @@
                 <ul>
                     <?php
                     if (isset($_SESSION['name'])) { ?>
-                        <li><a href="logout.php">Logout</a></li>   
+                    <li><?= $_SESSION['name'] ?></li> 
+                        <li><a href="logout.php">Logout</a></li>  
+                        
                  <?php   }
                  else{ ?>
                         <li><a href="login.php">Login</a></li>
