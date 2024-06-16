@@ -198,6 +198,12 @@ img{
     left: 20px;
 }
 
+#admin-display{
+    font-size: 18px;
+    font-weight: 500;
+    cursor:default;
+}
+
 @media(max-width: 600px){
     .header{
         font-family: "Anta", sans-serif;

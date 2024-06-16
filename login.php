@@ -24,7 +24,7 @@
 
         if(!$error){
             //proceed for login
-          $sql = "select * from users where email = ?";
+          $sql = "select *, SUBSTRING_INDEX(name,' ',1) AS first_name FROM users where email = ?";
           $stmt = $con->prepare($sql);
           $stmt->bind_param("s",$email);
           $stmt->execute();
@@ -37,11 +37,11 @@
                 if(password_verify($pwd, $stored_pwd)){
                     //successful login
 
-                    $_SESSION['name'] = $row['name'];
+                    $_SESSION['name'] = $row['first_name'];
                     $_SESSION['role'] = $role;
 
                     if($role == 1 || $role == 2){
-                        header("location: adminpage.php");
+                        header("location: homepage.php");
                     }
                     else{
                         header("location: gamepage.php");
