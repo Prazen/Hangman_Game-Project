@@ -6,6 +6,7 @@ const gameModel = document.querySelector(".game-model");
 const playAgainBtn = document.querySelector(".play-again");
 const scoreText = document.querySelector(".score-text b");
 
+let wordList = [];
 let currentWord, correctLetters = [], wrongGuessCount = 0, score = 0, currentIndex = 0;
 const maxGuesses = 6;
 const maxScore = 20;
@@ -109,7 +110,16 @@ for (let i=97; i<=122; i++){
     keyboardDiv.appendChild(button);
     button.addEventListener("click", e => initGame(e.target, String.fromCharCode(i)));
 }
-getRandomWord();
+
+const fetchWordList = async () => {
+    try {
+        const response = await fetch('fetch_words.php');
+        wordList = await response.json();
+        getRandomWord();
+    } catch (error) {
+        console.error("Failed to fetch word list:", error);
+    }
+}
 
 playAgainBtn.addEventListener("click" , () =>{
     playAgainBtn.style.display = 'none';
@@ -117,3 +127,5 @@ playAgainBtn.addEventListener("click" , () =>{
     scoreText.innerHTML = `Score: ${score}`;
     getRandomWord();
 });
+
+fetchWordList();

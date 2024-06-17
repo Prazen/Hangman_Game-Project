@@ -8,7 +8,7 @@ if(!isset($_SESSION['name'])){
 
 include("topheader.php");
 
-include("cfg/dbconnect.php");
+// include("cfg/dbconnect.php");
 ?>
 
 <!DOCTYPE html>
@@ -56,7 +56,6 @@ include("cfg/dbconnect.php");
 
 
     
-    <script src="scripts/word.js" defer></script>
     <script src="scripts/game.js" defer ></script>
     
     

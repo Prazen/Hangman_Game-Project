@@ -60,8 +60,6 @@
 
     }
 
-  
-
 
     include("topheader.php");
     

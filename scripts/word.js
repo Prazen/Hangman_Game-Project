@@ -95,10 +95,3 @@ const wordList = [
         hint: "A book of blank pages for writing notes."
     }
 ];
-    
-
-
-
-
-
-

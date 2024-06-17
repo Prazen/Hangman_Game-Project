@@ -110,8 +110,9 @@ body{
 .navbar ul li:hover .sub-menu1{
     display: block;
     position: absolute;
+    
     background: #F9F7F7;
-    margin-left: 200px;
+    margin-left: 180px;
     margin-top: 0px;
 }
 
@@ -122,8 +123,8 @@ body{
 
 .navbar ul li:hover .sub-menu1 ul li{
     width: 100px;
-    margin: px;
-    padding: 5px 3px;
+    margin: 0px;
+    padding: 10px 3px;
     border-bottom: 1px solid rgb(0, 0, 0);
     background: transparent;
     border-radius: 0;
@@ -196,12 +197,6 @@ img{
     position: absolute;
     bottom: 12px;
     left: 20px;
-}
-
-#admin-display{
-    font-size: 18px;
-    font-weight: 500;
-    cursor:default;
 }
 
 @media(max-width: 600px){
