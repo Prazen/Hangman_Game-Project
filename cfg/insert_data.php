@@ -16,7 +16,7 @@ if (isset($_POST['add_words'])) {
         $stmt->bind_param("ss", $word, $hint);
 
         if ($stmt->execute()) { //execute the stmt
-            header('location: ../adminpage.php?insert_msg=Data has been added successfully');
+            header('location: ../adminpage.php?insert_msg=Data has been added successfully !');
         } else {
             die("Query Failed: " . $stmt->error); //if error occurs the msg display
         }

@@ -11,7 +11,7 @@
     <title>The Hangman Game: English Edition</title>
 
     <!-- css=>home -->
-    <link rel="stylesheet" href= "css/home.css?v=1.55" >
+    <link rel="stylesheet" href= "css/home.css?v=1.56" >
 
     <!-- font = anta -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

@@ -23,11 +23,21 @@ include("topheader.php");
 </head>
 <body>
     
-    <h1 id="main_title">Admin Page</h1>
+    <h1 id="main_title">Manage The Word</h1>
 
+    <?php
+    if(isset($_GET['update_msg'])){
+    echo '<h6 style="color:green;">'.$_GET['update_msg'].'</h6>';
+    }
+?>
     <?php
     if(isset($_GET['message'])){
     echo '<h6 style="color:red;">'.$_GET['message'].'</h6>';
+    }
+?>
+<?php
+    if(isset($_GET['delete_msg'])){
+    echo '<h6 style="color:red;">'.$_GET['delete_msg'].'</h6>';
     }
 ?>
 
@@ -39,7 +49,22 @@ include("topheader.php");
     <div class="container">
     
     <div class="box1">
+    <?php
+            
+            $sql = "SELECT * FROM `words`";
+            $result = $con->query($sql);
+       
+            if (!$result) {
+                die("Query Failed: " . $con->error);
+            }
+            
+            // Display total records count
+            $total_records = mysqli_num_rows($result);
+            echo "<h5 id='record_display'>Total Words: " . $total_records . "</h5>"; 
+            ?>
+
         <h2>All Words</h2>
+            
         <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Words</button>
     </div>
 
@@ -49,6 +74,8 @@ include("topheader.php");
                 <th>ID</th>
                 <th>word</th>
                 <th>hint</th>
+                <th>Update</th>
+                <th>Delete</th>
             </tr>
         </thead>
         <tbody>
@@ -68,6 +95,8 @@ include("topheader.php");
                             <td><?php echo $row['id']; ?></td>
                             <td><?php echo $row['word']; ?></td>
                             <td><?php echo $row['hint']; ?></td>
+                            <td><a href="update-page.php?id=<?php echo $row['id']; ?>" class="btn btn-success">Update</a></td>
+                            <td><a href="delete-page.php?id=<?php echo $row['id']; ?>" class="btn btn-danger">Delete</a></td>
                         </tr>
 
                         <?php
@@ -112,3 +141,4 @@ include("topheader.php");
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
+

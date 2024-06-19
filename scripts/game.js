@@ -9,7 +9,7 @@ const scoreText = document.querySelector(".score-text b");
 let wordList = [];
 let currentWord, correctLetters = [], wrongGuessCount = 0, score = 0, currentIndex = 0;
 const maxGuesses = 6;
-const maxScore = 20;
+const maxScore = 3;
 
 const resetGame = () => {
 
@@ -56,8 +56,10 @@ const gameOver = (isVictory) => {
         if (isVictory){
             score++;
             scoreText.innerHTML = `Score: ${score}`;
+            console.log(score);
             currentIndex++; //if each word is completed then index will also update by 1.
             if(score >= maxScore){
+                
                 setTimeout(() => {
                     alert('Congrats! You have completed all 20 words!');
                     scoreText.innerText = `Your Final Score: ${score}`;
