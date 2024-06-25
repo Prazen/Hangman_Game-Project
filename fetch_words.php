@@ -1,6 +1,6 @@
 <?php 
 include("cfg/dbconnect.php");
-$sql = "SELECT word, hint FROM words LIMIT 5";
+$sql= "SELECT word, hint FROM words ORDER BY CHAR_LENGTH(word) ASC LIMIT 5";
 $result = $con->query($sql);
 
 $words = array();

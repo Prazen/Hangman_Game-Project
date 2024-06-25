@@ -9,7 +9,7 @@ const scoreText = document.querySelector(".score-text b");
 let wordList = [];
 let currentWord, correctLetters = [], wrongGuessCount = 0, score = 0, currentIndex = 0;
 const maxGuesses = 6;
-const maxScore = 3;
+const maxScore = 5;
 
 const resetGame = () => {
 
@@ -61,7 +61,7 @@ const gameOver = (isVictory) => {
             if(score >= maxScore){
                 
                 setTimeout(() => {
-                    alert('Congrats! You have completed all 20 words!');
+                    alert(`Congrats! You have completed all ${maxScore} words!`);
                     scoreText.innerText = `Your Final Score: ${score}`;
                     playAgainBtn.style.display = 'block';
                 }, 1000);
@@ -106,11 +106,18 @@ const initGame = (button, clickedLetter) => {
 }
 
 //Creating keyboard Button dynamically by click
-for (let i=97; i<=122; i++){
+for (let i = 97; i <= 122; i++) {
+    const letter = String.fromCharCode(i);
     const button = document.createElement("button");
-    button.innerText = String.fromCharCode(i);
+    button.innerText = letter;
     keyboardDiv.appendChild(button);
-    button.addEventListener("click", e => initGame(e.target, String.fromCharCode(i)));
+    button.addEventListener("click", e => initGame(e.target, letter));
+
+    document.addEventListener("keydown", e => {
+        if (e.key.toLowerCase() === letter && !button.disabled) {
+            initGame(button, letter);
+        }
+    });
 }
 
 const fetchWordList = async () => {

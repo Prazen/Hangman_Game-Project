@@ -11,7 +11,7 @@
     <title>The Hangman Game: English Edition</title>
 
     <!-- css=>home -->
-    <link rel="stylesheet" href= "css/home.css?v=1.56" >
+    <link rel="stylesheet" href= "css/home.css?v=1.57" >
 
     <!-- font = anta -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,11 +22,6 @@
 <body>
 <div class="header">
        <a href="homepage.php" class="logo">Hangman Game</a>
-       <?php
-                    if (isset($_SESSION['name'])){ 
-                        if($_SESSION['role'] == 1 || $_SESSION['role'] == 2) { 
-                        ?>
-                    <div id="admin-display"> Welcome Admin, <?=$_SESSION['name'] ?></div> <?php }  }?>
        <nav class="navbar">
         <ul>
             <li><a href="homepage.php" class="active" ><img src="Assets/home-svgrepo-com.svg" height="20">Home</a></li>
@@ -37,20 +32,13 @@
             <div class="sub-menu1">
                 <ul>
                     <?php
-                    if (isset($_SESSION['name'])){
-                        if($_SESSION['role'] == 1 || $_SESSION['role'] == 2) { 
-                        ?>
-                    <li><a href="adminpage.php">Manage</a></li>
-                    <li><a href="logout.php">Logout</a></li>
-                    <?php 
-                        }
-                        else{
+                        if(isset($_SESSION['name'])){ 
                              ?>
                         <li><?= $_SESSION['name'] ?></a></li>
                         <li><a href="logout.php">Logout</a></li>
                <?php  
                }
-            } else {
+            else {
                 ?>
                 <li><a href="login.php">Login</a></li>
                 <li><a href="signup.php">Sign Up</a></li>
@@ -61,14 +49,14 @@
             </div>
             </li>
 
-            <?php 
-            if(isset($_SESSION['name']) && $_SESSION['role'] != 1 && $_SESSION['role'] != 2 ){ ?>
-                <li><a href="gamepage.php"><img src="Assets/game-svgrepo-com.svg" height="20">Play Game</a></li>
-                <?php 
-            } else if (!isset($_SESSION['name'])){?>
-            <li><a href="login.php"><img src="Assets/game-svgrepo-com.svg" height="20">Play Game</a></li>
             <?php
-        } ?>
+                    if (isset($_SESSION['name'])) { ?>
+
+                        <li><a href="gamepage.php"> <img src="Assets/game-svgrepo-com.svg" height="20" >Play Game</a> </li>
+                 <?php   }
+                  else{ ?>
+                  <li><a href="login.php"> <img src="Assets/game-svgrepo-com.svg" height="20" >Play Game</a> </li>
+           <?php  }?>
        
         </ul>
         </nav>

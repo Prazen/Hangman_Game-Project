@@ -23,28 +23,23 @@ include("topheader.php");
 </head>
 <body>
     
-    <h1 id="main_title">Manage The Word</h1>
+    <h1 id="main_title">Words List</h1>
 
     <?php
+if(isset($_GET['update_msg']) || isset($_GET['message']) || isset($_GET['delete_msg']) || isset($_GET['insert_msg'])){
     if(isset($_GET['update_msg'])){
-    echo '<h6 style="color:green;">'.$_GET['update_msg'].'</h6>';
+        echo '<h6 style="color:green;">'.$_GET['update_msg'].'</h6>';
     }
-?>
-    <?php
     if(isset($_GET['message'])){
-    echo '<h6 style="color:red;">'.$_GET['message'].'</h6>';
+        echo '<h6 style="color:red;">'.$_GET['message'].'</h6>';
     }
-?>
-<?php
     if(isset($_GET['delete_msg'])){
-    echo '<h6 style="color:red;">'.$_GET['delete_msg'].'</h6>';
+        echo '<h6 style="color:red;">'.$_GET['delete_msg'].'</h6>';
     }
-?>
-
-<?php
     if(isset($_GET['insert_msg'])){
-    echo '<h6 style="color:green;">'.$_GET['insert_msg'].'</h6>';
+        echo '<h6 style="color:green;">'.$_GET['insert_msg'].'</h6>';
     }
+}
 ?>
     <div class="container">
     
@@ -71,7 +66,7 @@ include("topheader.php");
     <table class="table table-hover table-bordered table-striped">
         <thead>
             <tr>
-                <th>ID</th>
+                <th>#</th>
                 <th>word</th>
                 <th>hint</th>
                 <th>Update</th>
@@ -80,19 +75,17 @@ include("topheader.php");
         </thead>
         <tbody>
             <?php
-                $sql = "SELECT * FROM `words`";
-
-                $result = $con->query($sql);
                 
                 if(!$result){
                     die("Query Failed".mysqli_error($con));
                 }
                 else{
+                    $i = 1;
                     while($row = mysqli_fetch_assoc($result)){
                         ?>
                         
                         <tr>
-                            <td><?php echo $row['id']; ?></td>
+                            <td><?php echo $i ; //$row['id']; ?></td>
                             <td><?php echo $row['word']; ?></td>
                             <td><?php echo $row['hint']; ?></td>
                             <td><a href="update-page.php?id=<?php echo $row['id']; ?>" class="btn btn-success">Update</a></td>
@@ -100,6 +93,7 @@ include("topheader.php");
                         </tr>
 
                         <?php
+                        $i++;
                     }
                 }
 

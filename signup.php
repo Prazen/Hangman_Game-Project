@@ -1,4 +1,5 @@
 <?php 
+    session_start();
     include("cfg/dbconnect.php");
     $name = $email = $pwd = $confirmpwd = "";
     $name_err = $email_err = $pwd_err = $confirmpwd_err = "";
@@ -60,35 +61,17 @@
 
             $pwd = password_hash($pwd, PASSWORD_DEFAULT); //hash the password
 
-            $roleSql = "SELECT MAX(role) AS max_role FROM users"; // Determine the role
-
+            $sql = "insert into users (name, email, password) values (?, ? ,?)"; // query to insert
 
             try{
 
-                $stmt = $con->prepare($roleSql);
-                $stmt->execute();
-                $result = $stmt -> get_result();
-                $row = $result->fetch_assoc();
-
-                $maxRole = $row['max_role'];
-
-                if($maxRole === null){
-                    $newRole = 1;
-                }
-                elseif($maxRole == 1 ){
-                    $newRole = 2;
-                }
-                else{
-                    $newRole = $maxRole + 1;
-                }
-
-
-                $sql = "insert into users (name, email, password, role) values (?, ? ,?, ?)"; // query to insert
                 $stmt = $con->prepare($sql);
-                $stmt->bind_param("ssss",$name,$email,$pwd, $newRole);
+                $stmt->bind_param("sss",$name,$email,$pwd);
                 $stmt->execute();
-                $succ_msg = "Registration Successful. Please login <a href = 'login.php'><u>here</u> </a>";
-
+                
+                $_SESSION['succ_msg'] = "Registration Successful.";
+                header("location:login.php");
+                
             }
 
             catch(Exception $e){
@@ -138,11 +121,11 @@ if(!empty($err_msg)){ ?>
 
     <form action="" method="post">
         <label for="name">Name</label>
-        <input type="text" id="name" name="name" placeholder="Enter your full name" value="<?= $name ?>">
+        <input type="text" id="name" name="name" placeholder="Enter your full name" >
         <div class="text-danger input-err"><?= $name_err ?></div>
     
         <label for="email">Email</label>
-        <input type="email" id="email" name="email" placeholder="Enter your email" value="<?= $email ?>">
+        <input type="email" id="email" name="email" placeholder="Enter your email" >
         <div class="text-danger input-err"><?= $email_err ?></div>
         
         <label for="password">Password</label>

@@ -5,10 +5,18 @@
     $email_err = $pwd_err = "";
     $err_msg = "";
     $error = false;
+    $succ_msg = "";
+
+
+    if (isset($_SESSION['succ_msg'])) {
+        $succ_msg = $_SESSION['succ_msg'];
+        unset($_SESSION['succ_msg']);
+    }
+
 
     if(isset($_POST['submit'])){
         $email= trim($_POST['email']) ;
-        $pwd= trim ($_POST['pwd']);
+        $pwd= trim ($_POST['pwd']);  
 
         //validate input
         if($email == ""){
@@ -30,22 +38,14 @@
           $stmt->execute();
           $result= $stmt->get_result();
             if($result->num_rows == 1){
-                $row = $result->fetch_assoc();
-                $stored_pwd = $row['password'];
-                $role = $row['role'];
+                $row = $result->fetch_assoc(); 
+                $stored_pwd = $row['password']; 
 
                 if(password_verify($pwd, $stored_pwd)){
                     //successful login
 
                     $_SESSION['name'] = $row['first_name'];
-                    $_SESSION['role'] = $role;
-
-                    if($role == 1 || $role == 2){
-                        header("location: homepage.php");
-                    }
-                    else{
-                        header("location: gamepage.php");
-                    }
+                    header("location: gamepage.php");
                 }
                 else{
                     $err_msg = "Incorrect Password";
@@ -76,6 +76,12 @@
 </head>
 <body>
 <h1>Login</h1>
+    <?php 
+    if (!empty($succ_msg)) { ?>
+    <div class="alert-msg-succ">
+    <?= $succ_msg; ?>
+    </div>
+    <?php } ?>
 
     <?php 
 if(!empty($err_msg)){ ?>

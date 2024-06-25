@@ -104,6 +104,8 @@ body{
     display: none;
 }
 .sub-menu1 ul li a{
+    margin: 0px;
+    padding: 0px;
     color: rgb(0, 0, 0);
 }
 
@@ -118,7 +120,6 @@ body{
 
 .navbar ul li:hover .sub-menu1 ul li{
     display: block;
-    margin: 5px;
 }
 
 .navbar ul li:hover .sub-menu1 ul li{
@@ -198,7 +199,6 @@ img{
     bottom: 12px;
     left: 20px;
 }
-
 @media(max-width: 600px){
     .header{
         font-family: "Anta", sans-serif;
