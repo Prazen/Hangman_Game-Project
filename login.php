@@ -37,6 +37,7 @@
           $stmt->bind_param("s",$email);
           $stmt->execute();
           $result= $stmt->get_result();
+
             if($result->num_rows == 1){
                 $row = $result->fetch_assoc(); 
                 $stored_pwd = $row['password']; 
@@ -45,7 +46,15 @@
                     //successful login
 
                     $_SESSION['name'] = $row['first_name'];
-                    header("location: gamepage.php");
+                    $_SESSION['role'] = $row['role'];
+
+                    if($row['role'] == 1){
+                        header("Location: homepage.php");
+                    }
+                    else{
+                        header("location: gamepage.php");
+                    }
+                    
                 }
                 else{
                     $err_msg = "Incorrect Password";

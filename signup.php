@@ -61,17 +61,19 @@
 
             $pwd = password_hash($pwd, PASSWORD_DEFAULT); //hash the password
 
-            $sql = "insert into users (name, email, password) values (?, ? ,?)"; // query to insert
+            $role = 1; //role for admin as 1
+
+            $sql = "insert into users (name, email, password, role) values (?, ? ,?, ?)"; // query to insert
 
             try{
 
                 $stmt = $con->prepare($sql);
-                $stmt->bind_param("sss",$name,$email,$pwd);
+                $stmt->bind_param("ssss",$name,$email,$pwd,$role);
                 $stmt->execute();
                 
                 $_SESSION['succ_msg'] = "Registration Successful.";
                 header("location:login.php");
-                
+                exit();
             }
 
             catch(Exception $e){
